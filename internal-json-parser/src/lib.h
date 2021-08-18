@@ -1,0 +1,2 @@
+
+int json_valid();

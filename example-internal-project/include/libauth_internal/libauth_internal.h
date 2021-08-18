@@ -1,0 +1,2 @@
+
+int is_auth();
