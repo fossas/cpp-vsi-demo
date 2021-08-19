@@ -4,7 +4,7 @@ exit 0;
 # Run a scan of our example "internal project"
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
-  --project internal-project --revision (date +%s) \
+  --project internal-project --revision $(date +%s) \
   --enable-vsi
 
 # Notice that we discover two vendored dependencies: folly and tessaract.
@@ -32,14 +32,14 @@ fossa experimental-link-user-defined-dependency-binary bin/jq \
 # Now let's scan the JSON parser in FOSSA, and link its output binary:
 fossa analyze internal-json-parser \
   -e '<endpoint>' --fossa-api-key <api-key> \
-  --project internal-json-parser --revision (date +%s) \
+  --project internal-json-parser --revision $(date +%s) \
   --experimental-link-project-binary bin/libjson_internal \
   --enable-vsi
 
 # Now that we've linked our dependencies, we can re-analyze our internal project:
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
-  --project internal-project --revision (date +%s) \
+  --project internal-project --revision $(date +%s) \
   --enable-vsi
 
 # We now should see the three dependencies that were vendored as before, but this time we also show the new dependencies we've linked.
