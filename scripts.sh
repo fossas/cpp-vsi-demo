@@ -2,7 +2,7 @@
 exit 0;
 
 # Run a scan of our example "internal project"
-fossa analyze ~/projects/scratch/cpp-demo/example-internal-project \
+fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-project --revision (date +%s) \
   --enable-vsi
@@ -12,7 +12,7 @@ fossa analyze ~/projects/scratch/cpp-demo/example-internal-project \
 
 # This internal auth library isn't source available; it's built and distributed internally by another team.
 # Let's link that as a user-defined dependency:
-fossa experimental-link-user-defined-dependency-binary ~/projects/scratch/cpp-demo/bin/libauth_internal \
+fossa experimental-link-user-defined-dependency-binary bin/libauth_internal \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --name libauth_internal \
   --version 1.0 \
@@ -21,7 +21,7 @@ fossa experimental-link-user-defined-dependency-binary ~/projects/scratch/cpp-de
 
 # The other library is an internal JSON parser.
 # It also depends on another internal library, so let's link that as another user-defined dependency:
-fossa experimental-link-user-defined-dependency-binary ~/projects/scratch/cpp-demo/bin/jq \
+fossa experimental-link-user-defined-dependency-binary bin/jq \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --name jq \
   --version 1.0 \
@@ -30,14 +30,14 @@ fossa experimental-link-user-defined-dependency-binary ~/projects/scratch/cpp-de
   --homepage 'https://github.com/stedolan/jq'
 
 # Now let's scan the JSON parser in FOSSA, and link its output binary:
-fossa analyze ~/projects/scratch/cpp-demo/internal-json-parser \
+fossa analyze internal-json-parser \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-json-parser --revision (date +%s) \
-  --experimental-link-project-binary ~/projects/scratch/cpp-demo/bin/libjson_internal \
+  --experimental-link-project-binary bin/libjson_internal \
   --enable-vsi
 
 # Now that we've linked our dependencies, we can re-analyze our internal project:
-fossa analyze ~/projects/scratch/cpp-demo/example-internal-project \
+fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-project --revision (date +%s) \
   --enable-vsi
