@@ -1,0 +1,7 @@
+vendored-dependencies:
+- name: folly
+  path: vendor/facebook-folly-6695020
+- name: tesseract
+  path: vendor/tesseract-ocr-tesseract-cd65104
+- name: internal
+  path: include
