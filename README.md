@@ -8,6 +8,8 @@ This project demonstrates the minimal functionality for FOSSA C/C++ support via 
 1. Install the [fossa CLI](https://github.com/fossas/spectrometer/releases) somewhere in your `$PATH`.
 1. Follow along in `scripts.sh`- the comments describe the demo flow. Fill in the placeholders (denoted by `<` and `>`) for the commands when running them.
 
+Make sure to run the "regenerate binaries" steps; in order to keep demo's consistent we no longer vendor binaries in this project.
+
 # Directory overview
 
 * `bin` - Contains binaries to link with projects. These binaries aren't real binaries; they're just random files.

@@ -1,1 +1,9 @@
 .DS_STORE
+
+bin/jq/jq.o
+bin/libauth_internal/libauth_internal.o
+bin/libjson_internal/libjson_internal.o
+
+internal-json-parser/vendor/jq.o
+example-internal-project/include/libauth_internal/libauth_internal.o
+example-internal-project/include/libjson_internal/libjson_internal.o

@@ -2,6 +2,7 @@
 exit 0;
 
 # Regenerate binaries
+mkdir -p bin/libjson_internal bin/libauth_internal bin/jq
 dd if=/dev/random bs=1 count=100000 of=bin/libjson_internal/libjson_internal.o
 dd if=/dev/random bs=1 count=100000 of=bin/libauth_internal/libauth_internal.o
 dd if=/dev/random bs=1 count=100000 of=bin/jq/jq.o
