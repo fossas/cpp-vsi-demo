@@ -1,6 +1,15 @@
 # Don't accidentally run this
 exit 0;
 
+# Regenerate binaries
+mkdir -p bin/libjson_internal bin/libauth_internal bin/jq
+dd if=/dev/random bs=1 count=100000 of=bin/libjson_internal/libjson_internal.o
+dd if=/dev/random bs=1 count=100000 of=bin/libauth_internal/libauth_internal.o
+dd if=/dev/random bs=1 count=100000 of=bin/jq/jq.o
+cp bin/jq/jq.o internal-json-parser/vendor/jq.o
+cp bin/libauth_internal/libauth_internal.o example-internal-project/include/libauth_internal/libauth_internal.o
+cp bin/libjson_internal/libjson_internal.o example-internal-project/include/libjson_internal/libjson_internal.o
+
 # Run a scan of our example "internal project"
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
