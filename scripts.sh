@@ -51,5 +51,5 @@ fossa analyze example-internal-project \
   --project internal-project --revision $(date +%s) \
   --enable-vsi
 
-# We now should see the three dependencies that were vendored as before, but this time we also show the new dependencies we've linked.
+# We now should see the dependencies that were vendored as before, but this time we also show the new dependencies we've linked.
 # We also see the deep dependencies in the case of the our internal JSON parsing library, since it is also a project in FOSSA!
