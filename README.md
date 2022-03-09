@@ -15,5 +15,6 @@ Make sure to run the "regenerate binaries" steps; in order to keep demo's consis
 * `bin` - Contains binaries to link with projects. These binaries aren't real binaries; they're just random files.
 * `internal-json-parser` - An example internal library. Contains the `bin/jq/jq.o` binary.
 * `example-internal-project` - An example internal project. Contains vendored source (in `vendor`), and the `bin/libauth_internal` and `bin/libjson_internal` binaries (in `include`).
+* `librayon` - A downloaded Rust project for `rayon` (https://lib.rs/crates/rayon). Has no significance, I just needed a real project that wouldn't be found with VSI and would have dependencies.
 
 All other files not mentioned here (eg `.c` and `.h` files) are placeholders.
