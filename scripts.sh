@@ -14,7 +14,7 @@ cp bin/libjson_internal/libjson_internal.o example-internal-project/include/libj
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-project --revision $(date +%s) \
-  --enable-vsi
+  --experimental-enable-vsi
 
 # Notice that we discover two vendored dependencies: folly and tessaract.
 # However, in our example, we also have some binaries that are built internally (in `include`) that we want to track.
@@ -43,13 +43,13 @@ fossa analyze internal-json-parser \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-json-parser --revision $(date +%s) \
   --experimental-link-project-binary bin/libjson_internal \
-  --enable-vsi
+  --experimental-enable-vsi
 
 # Now that we've linked our dependencies, we can re-analyze our internal project:
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-project --revision $(date +%s) \
-  --enable-vsi
+  --experimental-enable-vsi
 
 # We now should see the dependencies that were vendored as before, but this time we also show the new dependencies we've linked.
 # We also see the deep dependencies in the case of the our internal JSON parsing library, since it is also a project in FOSSA!
@@ -67,7 +67,7 @@ cp -r librayon example-internal-project/vendor/librayon
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-project --revision $(date +%s) \
-  --enable-vsi
+  --experimental-enable-vsi
 
 # And finally, cleanup.
 rm -rf example-internal-project/vendor/librayon
