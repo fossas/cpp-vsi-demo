@@ -53,21 +53,3 @@ fossa analyze example-internal-project \
 
 # We now should see the dependencies that were vendored as before, but this time we also show the new dependencies we've linked.
 # We also see the deep dependencies in the case of the our internal JSON parsing library, since it is also a project in FOSSA!
-
-# We can also use our support for static linking to identify known project source code, not just binaries, by linking the project "to itself".
-# Scan and record `librayon`. Wait for the build to complete and note its dependencies:
-fossa analyze librayon \
-  -e '<endpoint>' --fossa-api-key <api-key> \
-  --project librayon --revision $(date +%s) \
-  --experimental-link-project-binary librayon
-
-# Now if we copy `librayon` into `example-internal-project`, we can identify it with VSI!
-# Note how after this scan completes, we now also see `librayon` in the dependencies, and its dependencies as deep deps.
-cp -r librayon example-internal-project/vendor/librayon
-fossa analyze example-internal-project \
-  -e '<endpoint>' --fossa-api-key <api-key> \
-  --project internal-project --revision $(date +%s) \
-  --experimental-enable-vsi
-
-# And finally, cleanup.
-rm -rf example-internal-project/vendor/librayon
