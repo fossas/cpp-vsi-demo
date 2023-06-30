@@ -2,7 +2,7 @@
 exit 0;
 
 # Regenerate binaries
-mkdir -p bin/libjson_internal bin/libauth_internal bin/jq
+mkdir -p bin/libjson_internal bin/libauth_internal bin/jq internal-json-parser/vendor/
 dd if=/dev/urandom bs=1 count=100000 of=bin/libjson_internal/libjson_internal.o
 dd if=/dev/urandom bs=1 count=100000 of=bin/libauth_internal/libauth_internal.o
 dd if=/dev/urandom bs=1 count=100000 of=bin/jq/jq.o
@@ -14,7 +14,7 @@ cp bin/libjson_internal/libjson_internal.o example-internal-project/include/libj
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-project --revision $(date +%s) \
-  --experimental-enable-vsi
+  --detect-vendored
 
 # Notice that we discover two vendored dependencies: folly and tessaract.
 # However, in our example, we also have some binaries that are built internally (in `include`) that we want to track.
@@ -43,13 +43,13 @@ fossa analyze internal-json-parser \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-json-parser --revision $(date +%s) \
   --experimental-link-project-binary bin/libjson_internal \
-  --experimental-enable-vsi
+  --detect-vendored
 
 # Now that we've linked our dependencies, we can re-analyze our internal project:
 fossa analyze example-internal-project \
   -e '<endpoint>' --fossa-api-key <api-key> \
   --project internal-project --revision $(date +%s) \
-  --experimental-enable-vsi
+  --detect-vendored
 
 # We now should see the dependencies that were vendored as before, but this time we also show the new dependencies we've linked.
 # We also see the deep dependencies in the case of the our internal JSON parsing library, since it is also a project in FOSSA!
