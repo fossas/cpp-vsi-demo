@@ -1,4 +1,6 @@
 # CPP Demo
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffossas%2Fcpp-vsi-demo.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffossas%2Fcpp-vsi-demo?ref=badge_shield)
+
 
 This project demonstrates the minimal functionality for FOSSA C/C++ support via VSI and IAT.
 
@@ -17,3 +19,7 @@ Make sure to run the "regenerate binaries" steps; in order to keep demo's consis
 * `example-internal-project` - An example internal project. Contains vendored source (in `vendor`), and the `bin/libauth_internal` and `bin/libjson_internal` binaries (in `include`).
 
 All other files not mentioned here (eg `.c` and `.h` files) are placeholders.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffossas%2Fcpp-vsi-demo.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffossas%2Fcpp-vsi-demo?ref=badge_large)
